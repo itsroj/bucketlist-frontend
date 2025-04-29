@@ -1,0 +1,483 @@
+/* UserPage specific styles */
+
+/* User container */
+.user-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Welcome section */
+.welcome-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.welcome-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+  font-size: 1.125rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.create-button {
+  margin: 0;
+  padding: 1.5rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Sort section */
+.sort-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sort-icon {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+
+/* Dark mode sort button */
+.dark .sort-section button {
+  background-color: var(--button-bg);
+  border-color: #333340;
+  color: white;
+}
+
+.dark .sort-section button:hover {
+  background-color: #3a3a45;
+}
+
+/* Sort button in light mode */
+.sort-section button {
+  background-color: #e5e5e5;
+  border-color: #d1d1d1;
+  color: var(--foreground);
+}
+
+.sort-section button:hover {
+  background-color: #d1d1d1;
+}
+
+/* Entries container */
+.entries-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 4rem;
+  background-color: rgba(113, 113, 122, 0.1);
+  border-radius: 0.5rem;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.empty-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.empty-subtitle {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Dark mode empty state */
+.dark .empty-state {
+  background-color: rgba(43, 43, 51, 0.4);
+}
+
+/* Bucket List Entry */
+.bucket-list-entry {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: white;
+  transition: box-shadow 0.2s, background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto var(--space-6);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  cursor: pointer;
+}
+
+/* Restore hover effect for bucket list entries */
+.bucket-list-entry:hover {
+  box-shadow: var(--shadow);
+}
+
+/* Dark mode bucket list entries */
+.dark .bucket-list-entry {
+  background-color: var(--card-bg);
+  border-color: #333340;
+  box-shadow: var(--card-shadow);
+}
+
+.dark .bucket-list-entry:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.4) 0px 30px 60px -30px,
+    rgba(0, 0, 0, 0.45) 0px -2px 6px 0px inset;
+}
+
+/* Fixed height entry cards */
+.fixed-height-entry {
+  height: 180px;
+  position: relative;
+}
+
+/* Entry row styling */
+.entry-row {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  position: relative;
+  height: 100%;
+}
+
+/* Checkbox styling */
+.entry-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  align-self: center;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.checkbox.checked {
+  background-color: var(--primary);
+}
+
+/* Entry image */
+.entry-image {
+  height: 140px;
+  width: 140px;
+  min-width: 140px;
+  margin-right: 16px;
+  border-radius: calc(var(--radius) - 2px);
+  overflow: hidden;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.entry-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* Entry content */
+.entry-content {
+  flex: 1;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.entry-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.entry-description {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* Entry actions */
+.entry-actions {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+/* Dark mode button styles for entry actions */
+.dark .entry-actions .btn:not(.btn-destructive) {
+  background-color: var(--button-bg);
+  border-color: #333340;
+  color: white;
+}
+
+.dark .entry-actions .btn:not(.btn-destructive):hover {
+  background-color: #3a3a45;
+}
+
+/* Entry actions Edit button in light mode */
+.entry-actions .btn:not(.btn-destructive) {
+  background-color: #e5e5e5;
+  border-color: #d1d1d1;
+  color: var(--foreground);
+}
+
+.entry-actions .btn:not(.btn-destructive):hover {
+  background-color: #d1d1d1;
+}
+
+/* Entry completed overlay */
+.entry-completed-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+.dark .entry-completed-overlay {
+  background-color: rgba(30, 30, 36, 0.7);
+}
+
+.entry-completed-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Entry details layout */
+.entry-details-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.entry-detail {
+  margin-right: 24px;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* Completed date field */
+.completion-date {
+  display: none;
+  margin-top: 5px;
+}
+
+.completed .completion-date {
+  display: block;
+}
+
+/* Truncated description */
+.truncated-description {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: var(--space-4);
+}
+
+.see-more-text {
+  color: var(--primary);
+  font-size: 0.875rem;
+  display: block;
+}
+
+/* Description dialog */
+.description-dialog,
+.entry-dialog {
+  max-width: 550px;
+  width: 90vw;
+}
+
+.description-dialog-content {
+  padding: 1rem 0;
+  line-height: 1.6;
+}
+
+.description-dialog-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+}
+
+.description-dialog-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.description-dialog-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.description-dialog-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.description-dialog-value {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* Page top section with welcome and progress */
+.page-top-section {
+  padding-top: 30px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Progress section */
+.progress-section {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  z-index: 5;
+}
+
+.progress-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: white;
+  transition: box-shadow 0.2s, background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  width: 280px;
+  padding: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.progress-card:hover {
+  box-shadow: var(--shadow);
+}
+
+/* Dark mode progress card */
+.dark .progress-card {
+  background-color: var(--card-bg);
+  border-color: #333340;
+  box-shadow: var(--card-shadow);
+}
+
+.dark .progress-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.4) 0px 30px 60px -30px,
+    rgba(0, 0, 0, 0.45) 0px -2px 6px 0px inset;
+}
+
+.progress-stats {
+  width: 100%;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.progress-bar-container {
+  height: 8px;
+  width: 100%;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dark .progress-bar-container {
+  background-color: #2d2d34;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--primary);
+  transition: width 1s ease-out;
+}
+
+.progress-message {
+  height: 48px;
+  overflow: hidden;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  color: var(--muted);
+}
+
+/* Entries scrollable container */
+.entries-scrollable-container {
+  height: calc(100vh - 350px);
+  min-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-bottom: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .entry-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .entry-checkbox {
+    min-width: 60px;
+  }
+
+  .entry-image {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,9 @@
+/* This file is kept for backward compatibility */
+/* It imports all component-specific CSS files */
+
+@import "./common.css";
+@import "./navbar.css";
+@import "./footer.css";
+@import "./homePage.css";
+@import "./userPage.css";
+@import "./chatbot.css";

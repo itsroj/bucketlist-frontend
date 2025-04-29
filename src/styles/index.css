@@ -1,0 +1,7 @@
+/* Import all CSS files */
+@import "./common.css";
+@import "./navbar.css";
+@import "./footer.css";
+@import "./homePage.css";
+@import "./userPage.css";
+@import "./chatbot.css";
