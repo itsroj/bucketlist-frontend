@@ -17,6 +17,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useAuth } from "../lib/AuthContext";
 import { profileAPI, bucketListAPI, uploadAPI } from "../lib/api";
+import defaultEntryImage from "../assets/default-entry-image.png";
 
 interface BucketListEntry {
   id: string;
@@ -51,8 +52,7 @@ const UserPage = () => {
     title: "",
     description: "",
     location: "Anywhere",
-    imageUrl:
-      "https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg", // Default placeholder
+    imageUrl: "",
     completed: false,
   });
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
@@ -130,8 +130,7 @@ const UserPage = () => {
       title: "",
       description: "",
       location: "Anywhere",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg",
+      imageUrl: "",
       completed: false,
     });
     setIsCreateDialogOpen(true);
@@ -144,7 +143,7 @@ const UserPage = () => {
       title: entry.title,
       description: entry.description,
       location: entry.location,
-      imageUrl: entry.imageUrl,
+      imageUrl: "",
       completed: entry.completed,
     });
     setIsCreateDialogOpen(true);
@@ -206,11 +205,23 @@ const UserPage = () => {
     try {
       setLoading(true);
 
+      // Create the entry object to save
+      let entryToSave;
+
       if (isEditMode && currentEntry) {
+        // For edits, only update imageUrl if the user provided a new one
+        entryToSave = {
+          ...newEntry,
+          // Keep original imageUrl if no new URL is provided
+          imageUrl: newEntry.imageUrl
+            ? newEntry.imageUrl
+            : currentEntry.imageUrl,
+        };
+
         // Update existing entry
         const updatedEntry = await bucketListAPI.updateEntry(
           currentEntry.id,
-          newEntry
+          entryToSave
         );
         setEntries((prevEntries) =>
           prevEntries.map((entry) =>
@@ -218,8 +229,14 @@ const UserPage = () => {
           )
         );
       } else {
+        // For new entries, use default image if no URL is provided
+        entryToSave = {
+          ...newEntry,
+          imageUrl: newEntry.imageUrl || defaultEntryImage,
+        };
+
         // Create new entry
-        const createdEntry = await bucketListAPI.createEntry(newEntry);
+        const createdEntry = await bucketListAPI.createEntry(entryToSave);
         setEntries((prevEntries) => [...prevEntries, createdEntry]);
       }
       setIsCreateDialogOpen(false);
@@ -477,12 +494,16 @@ const UserPage = () => {
       {/* Progress tracker and welcome section together in the center */}
       <div className="container page-top-section">
         {/* Welcome message in the center */}
-        <div className="welcome-section">
+        <div className="welcome-section text-center mx-auto">
           <h2 className="welcome-title">Welcome {user.firstName}!</h2>
           <p className="welcome-subtitle">Here is your bucket list</p>
 
           {/* Smaller Create Entry button */}
-          <Button onClick={handleCreateEntry} className="create-button">
+          <Button
+            onClick={handleCreateEntry}
+            className="create-button"
+            size="lg"
+          >
             Create an entry
           </Button>
         </div>
@@ -536,7 +557,7 @@ const UserPage = () => {
                 <p className="empty-subtitle">
                   Start adding items to your bucket list!
                 </p>
-                <Button onClick={handleCreateEntry} className="primary-btn">
+                <Button onClick={handleCreateEntry} className="animated-button">
                   Create your first entry
                 </Button>
               </div>
@@ -767,7 +788,10 @@ const UserPage = () => {
                   {isUploading ? (
                     <Loader2 className="loader-icon" />
                   ) : (
-                    <ImageIcon className="icon-sm" />
+                    <>
+                      <ImageIcon className="icon-sm" />
+                      <span className="upload-text">Upload Image</span>
+                    </>
                   )}
                 </Button>
               </div>
