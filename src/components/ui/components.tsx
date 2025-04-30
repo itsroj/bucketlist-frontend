@@ -142,6 +142,7 @@ export function Dialog({ open = false, onOpenChange, children }: DialogProps) {
 
 export function DialogTrigger({
   children,
+  asChild, // Destructure asChild prop separately
   ...props
 }: React.ComponentPropsWithoutRef<"div"> & { asChild?: boolean }) {
   const { setOpen } = useDialogContext();
@@ -150,7 +151,7 @@ export function DialogTrigger({
     <div
       onClick={() => setOpen(true)}
       style={{ display: "inline-block", cursor: "pointer" }}
-      {...props}
+      {...props} // Now props no longer contains asChild
     >
       {children}
     </div>
