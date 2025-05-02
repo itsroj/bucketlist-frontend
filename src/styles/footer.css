@@ -3,7 +3,7 @@
 .footer {
   background-color: var(--primary);
   color: white;
-  padding: var(--space-12) 0;
+  padding: var(--space-8) 0; /* Reduced from space-12 to space-8 */
   border-top: 1px solid var(--border);
   position: relative;
   z-index: 10;
@@ -18,35 +18,42 @@
 .footer-content {
   display: flex;
   flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
 }
 
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-8);
+  grid-template-columns: 1fr 1.5fr 1.5fr; /* Adjusted for better spacing */
+  gap: var(--space-6); /* Reduced from space-8 */
+  align-items: start;
 }
 
 .footer-section {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2); /* Reduced from space-4 */
 }
 
 .footer-heading {
-  font-size: 1.125rem;
+  font-size: 1rem; /* Slightly smaller */
   font-weight: 600;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2); /* Reduced from space-3 */
 }
 
 .footer-menu {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-menu li {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1); /* Reduced from space-2 */
 }
 
 .footer-link {
   opacity: 0.9;
   transition: opacity 0.2s;
+  font-size: 0.9rem; /* Slightly smaller text */
 }
 
 .footer-link:hover {
@@ -54,8 +61,8 @@
 }
 
 .footer-bottom {
-  margin-top: var(--space-8);
-  padding-top: var(--space-8);
+  margin-top: var(--space-6); /* Reduced from space-8 */
+  padding-top: var(--space-4); /* Reduced from space-8 */
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
 }
@@ -65,8 +72,19 @@
   opacity: 0.8;
 }
 
+/* Responsive adjustments */
 @media (min-width: 768px) {
   .footer-links {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 1fr; /* Pushes middle content (About) more to the right */
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .footer {
+    padding: var(--space-6) 0; /* Even thinner on mobile */
   }
 }

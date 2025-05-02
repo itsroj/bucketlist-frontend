@@ -12,26 +12,6 @@ const Footer: React.FC = () => {
               <h3 className="footer-heading">About Us</h3>
               </Link>
             </div>
-            <div className="footer-section">
-              <h3 className="footer-heading">Contact Us</h3>
-              <ul className="footer-menu">
-                <li>
-                  <a href="#" className="footer-link">
-                    Support
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="footer-link">
-                    Email
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="footer-link">
-                    Help Center
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
         <div className="footer-bottom">
