@@ -1,0 +1,314 @@
+/* Page Layout Structure */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.about-container {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content Styling */
+.about-content {
+  background-color: var(--bg-card); /* Use theme variable instead of hardcoded #2a2a2a */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-content h1 {
+  text-align: center;
+  margin: 2rem 0;
+  background: linear-gradient(to right, #4776e6, #8e54e9, #4776e6);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.about-content h1:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #4776e6, #8e54e9);
+  border-radius: 2px;
+}
+
+.about-content h2 {
+  margin: 2rem 0 1rem;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Image Container Styling */
+.about-image-container {
+  width: calc(100% - 4rem); /* Match text container width */
+  text-align: center;
+  padding: 0;
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 12px; /* Add border radius */
+  margin: 0 auto; /* Center the image */
+  margin-top: 2rem;
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+  border-radius: 12px; /* Match container radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.about-image:hover {
+  transform: scale(1.05);
+}
+
+/* Text Content Styling */
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  padding: 2rem 2rem 2.5rem;
+  background-color: transparent; /* Use parent's background color */
+  border-radius: 0 0 16px 16px;
+}
+
+.about-text p {
+  margin-bottom: 1.4rem;
+}
+
+/* Style "Hey there!" like the mission heading */
+.about-text p:first-of-type {
+  font-size: 1.8rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #4776e6, #8e54e9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+}
+
+/* Highlight special sections */
+.about-text h2 {
+  background: linear-gradient(90deg, #4776e6, #8e54e9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding: 0.5rem 0;
+}
+
+/* Quote styling */
+.about-text p:last-of-type {
+  font-style: italic;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border-left: 4px solid var(--primary);
+  background-color: var(--bg-secondary); /* Use theme variable */
+  border-radius: 0 8px 8px 0;
+  margin-top: 2rem;
+}
+
+/* Social Profiles Styling */
+.social-profiles-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  width: calc(100% - 4rem);
+  max-width: 100%;
+  padding: 0;
+}
+
+.profile-links {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 0; /* Allow flex item to shrink below min-content */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-links:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.profile-links h3 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.profile-links h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #4776e6, #8e54e9);
+  border-radius: 1px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.social-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #4776e6, #8e54e9);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0.9;
+}
+
+.social-button:hover:before {
+  opacity: 1;
+}
+
+.social-button:active {
+  transform: scale(0.97);
+}
+
+.social-button.github {
+  color: white;
+  box-shadow: 0 4px 12px rgba(71, 118, 230, 0.3);
+}
+
+.social-button.linkedin {
+  color: white;
+  box-shadow: 0 4px 12px rgba(142, 84, 233, 0.3);
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .about-content {
+    border-radius: 20px;
+  }
+  
+  .about-image-container {
+    height: 450px;
+  }
+  
+  .about-text {
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .about-image-container {
+    height: 500px;
+    border-radius: 16px;
+  }
+  
+  .about-image {
+    border-radius: 16px;
+  }
+  
+  .about-content h1 {
+    font-size: 3rem;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .social-profiles-container {
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 4rem);
+  }
+  
+  .profile-links {
+    width: 100%;
+  }
+}
