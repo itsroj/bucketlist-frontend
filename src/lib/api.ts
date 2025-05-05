@@ -94,7 +94,7 @@ const uploadFile = async (endpoint: string, file: File) => {
 // Auth API functions
 export const authAPI = {
   login: async (email: string, password: string) => {
-    const data = await authFetch("/api/auth/login", {
+    const data = await authFetch("/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
@@ -107,7 +107,7 @@ export const authAPI = {
   },
 
   register: async (firstName: string, email: string, password: string) => {
-    const data = await authFetch("/api/auth/register", {
+    const data = await authFetch("/auth/register", {
       method: "POST",
       body: JSON.stringify({ firstName, email, password }),
     });
@@ -124,7 +124,7 @@ export const authAPI = {
     if (!token) return null;
 
     try {
-      return await authFetch("/api/auth/verify");
+      return await authFetch("/auth/verify");
     } catch (error) {
       removeToken();
       return null;
