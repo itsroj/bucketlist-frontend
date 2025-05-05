@@ -72,7 +72,7 @@ const uploadFile = async (endpoint: string, file: File) => {
   formData.append("image", file);
 
   try {
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const response = await fetch(`${API_URL}/api${endpoint}`, {
       method: "POST",
       headers: {
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
