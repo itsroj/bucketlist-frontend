@@ -18,6 +18,7 @@ import Footer from "../components/Footer";
 import { useAuth } from "../lib/AuthContext";
 import { profileAPI, bucketListAPI, uploadAPI } from "../lib/api";
 import defaultEntryImage from "../assets/default-entry-image.png";
+import SpaceButton from "../components/SpaceButton";
 
 interface BucketListEntry {
   id: string;
@@ -499,13 +500,7 @@ const UserPage = () => {
           <p className="welcome-subtitle">Here is your bucket list</p>
 
           {/* Smaller Create Entry button */}
-          <Button
-            onClick={handleCreateEntry}
-            className="create-button"
-            size="lg"
-          >
-            Create an entry
-          </Button>
+          <SpaceButton text="CREATE AN ENTRY" onClick={handleCreateEntry} />
         </div>
 
         <div className="progress-section">
@@ -557,9 +552,10 @@ const UserPage = () => {
                 <p className="empty-subtitle">
                   Start adding items to your bucket list!
                 </p>
-                <Button onClick={handleCreateEntry} className="animated-button">
-                  Create your first entry
-                </Button>
+                <SpaceButton
+                  text="CREATE YOUR FIRST ENTRY"
+                  onClick={handleCreateEntry}
+                />
               </div>
             ) : (
               sortedEntries.map((entry) => (

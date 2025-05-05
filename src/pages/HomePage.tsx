@@ -53,7 +53,7 @@ const HomePage = () => {
   const loginButton = (
     <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
       <DialogTrigger>
-        <Button className="primary-btn">Login / Sign Up</Button>
+        <SpaceButton text="LOGIN / SIGN UP" />
       </DialogTrigger>
       <DialogContent className="dialog-content auth-dialog">
         <DialogHeader className="dialog-header">
@@ -148,7 +148,7 @@ const HomePage = () => {
 
       <main className="main-content">
         <section className="hero-section">
-          <div className="container">
+          <div className="container text-center">
             <h2 className="hero-title">Create Your Personal Bucket List</h2>
             <p className="hero-description">
               Track your dreams, goals, and experiences in one place. Create,

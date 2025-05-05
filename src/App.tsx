@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import { ThemeProvider } from "./components/theme-provider";
 import "./styles/styles.css";
 import { AuthProvider } from "./lib/AuthContext";
@@ -24,6 +25,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
         </AuthProvider>

@@ -23,6 +23,42 @@
   padding: 0 var(--space-4);
 }
 
+.footer-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.footer-center .about-link {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.footer-center .about-link:hover {
+  opacity: 0.9;
+}
+
+.footer-center .about-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.footer-center .about-link:hover::after {
+  transform: scaleX(1);
+}
+
 .footer-links {
   display: grid;
   grid-template-columns: 1fr 1.5fr 1.5fr; /* Adjusted for better spacing */
@@ -83,7 +119,7 @@
   .footer-links {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .footer {
     padding: var(--space-6) 0; /* Even thinner on mobile */
   }

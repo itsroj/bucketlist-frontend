@@ -6,12 +6,10 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
-          <div className="footer-links">
-            <div className="footer-section">
-              <Link to="/about">
-              <h3 className="footer-heading">About Us</h3>
-              </Link>
-            </div>
+          <div className="footer-center">
+            <Link to="/about" className="about-link">
+              About Us
+            </Link>
           </div>
         </div>
         <div className="footer-bottom">
