@@ -10,7 +10,7 @@ import {
 import { Settings } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import logoImage from "../assets/logo-bucket.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   isUserLoggedIn?: boolean;
