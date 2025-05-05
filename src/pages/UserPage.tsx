@@ -19,6 +19,7 @@ import { useAuth } from "../lib/AuthContext";
 import { profileAPI, bucketListAPI, uploadAPI } from "../lib/api";
 import defaultEntryImage from "../assets/default-entry-image.png";
 import SpaceButton from "../components/SpaceButton";
+import chatbotGif from "../assets/chatbot.gif";
 
 interface BucketListEntry {
   id: string;
@@ -684,20 +685,12 @@ const UserPage = () => {
       <div className="chatbot-button-container">
         <Dialog open={isChatbotOpen} onOpenChange={setIsChatbotOpen}>
           <DialogTrigger asChild>
-            <Button className="circular-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="36"
-                height="36"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
+            <Button className="circular-button" variant="ghost">
+              <img
+                src={chatbotGif}
+                alt="Chat with AI Assistant"
+                className="chatbot-icon"
+              />
             </Button>
           </DialogTrigger>
           <DialogContent className="dialog-content chatbot-dialog">
