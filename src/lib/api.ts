@@ -30,7 +30,7 @@ const authFetch = async (endpoint: string, options: RequestInit = {}) => {
   };
 
   try {
-    const response = await fetch(`${API_URL}${endpoint}`, config);
+    const response = await fetch(`${API_URL}/api${endpoint}`, config);
 
     // Handle 401 unauthorized errors
     if (response.status === 401) {
