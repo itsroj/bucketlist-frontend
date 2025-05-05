@@ -138,29 +138,29 @@ export const authAPI = {
 
 // Bucket list API functions
 export const bucketListAPI = {
-  getEntries: () => authFetch("/api/bucket-list"),
+  getEntries: () => authFetch("/bucket-list"),
 
-  getEntry: (id: string) => authFetch(`/api/bucket-list/${id}`),
+  getEntry: (id: string) => authFetch(`/bucket-list/${id}`),
 
   createEntry: (entry: any) =>
-    authFetch("/api/bucket-list", {
+    authFetch("/bucket-list", {
       method: "POST",
       body: JSON.stringify(entry),
     }),
 
   updateEntry: (id: string, entry: any) =>
-    authFetch(`/api/bucket-list/${id}`, {
+    authFetch(`/bucket-list/${id}`, {
       method: "PUT",
       body: JSON.stringify(entry),
     }),
 
   toggleCompletion: (id: string) =>
-    authFetch(`/api/bucket-list/${id}/toggle`, {
+    authFetch(`/bucket-list/${id}/toggle`, {
       method: "PATCH",
     }),
 
   deleteEntry: (id: string) =>
-    authFetch(`/api/bucket-list/${id}`, {
+    authFetch(`/bucket-list/${id}`, {
       method: "DELETE",
     }),
 };
@@ -170,19 +170,19 @@ export const profileAPI = {
   getProfile: () => authFetch("/api/profile"),
 
   updateProfile: (firstName: string, currentPassword: string) =>
-    authFetch("/api/profile", {
+    authFetch("/profile", {
       method: "PUT",
       body: JSON.stringify({ firstName, currentPassword }),
     }),
 
   changePassword: (currentPassword: string, newPassword: string) =>
-    authFetch("/api/profile/password", {
+    authFetch("/profile/password", {
       method: "PUT",
       body: JSON.stringify({ currentPassword, newPassword }),
     }),
 
   deleteAccount: (password: string) =>
-    authFetch("/api/profile", {
+    authFetch("/profile", {
       method: "DELETE",
       body: JSON.stringify({ password }),
     }),
@@ -191,18 +191,18 @@ export const profileAPI = {
 // Chatbot API functions
 export const chatbotAPI = {
   // Get chat history
-  getChatHistory: () => authFetch("/api/chatbot/history"),
+  getChatHistory: () => authFetch("/chatbot/history"),
 
   // Send a new message
   sendMessage: (message: string) =>
-    authFetch("/api/chatbot/message", {
+    authFetch("/chatbot/message", {
       method: "POST",
       body: JSON.stringify({ message }),
     }),
 
   // Clear chat history
   clearChatHistory: () =>
-    authFetch("/api/chatbot/history", {
+    authFetch("/chatbot/history", {
       method: "DELETE",
     }),
 };
@@ -210,5 +210,5 @@ export const chatbotAPI = {
 // Upload API functions
 export const uploadAPI = {
   // Upload an image to Cloudinary
-  uploadImage: (file: File) => uploadFile("/api/upload/image", file),
+  uploadImage: (file: File) => uploadFile("/upload/image", file),
 };

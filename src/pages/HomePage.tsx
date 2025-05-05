@@ -14,6 +14,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useAuth } from "../lib/AuthContext";
 import { Loader2 } from "lucide-react";
+import SpaceButton from "../components/SpaceButton";
 
 const HomePage = () => {
   const { login, register, isLoading } = useAuth();
@@ -237,8 +238,10 @@ const HomePage = () => {
                 open={isLoginDialogOpen}
                 onOpenChange={setIsLoginDialogOpen}
               >
-                <DialogTrigger>
-                  <Button className="primary-btn">Get Started Today</Button>
+                <DialogTrigger asChild>
+                  <div>
+                    <SpaceButton text="GET STARTED TODAY" />
+                  </div>
                 </DialogTrigger>
               </Dialog>
             </div>
