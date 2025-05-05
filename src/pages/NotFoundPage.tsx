@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import notFoundImage from "../assets/404-image.png";
 import { useAuth } from "../lib/AuthContext";
+import SpaceButton from "../components/SpaceButton";
 import "../styles/notFound.css";
 
 const NotFoundPage = () => {
@@ -33,9 +34,7 @@ const NotFoundPage = () => {
           We couldn't find the page you're looking for. It might have been moved
           or deleted.
         </p>
-        <Button className="back-button" onClick={handleBack}>
-          Back to the actual bucket
-        </Button>
+        <SpaceButton text="BACK TO THE BUCKET" onClick={handleBack} />
       </main>
 
       <Footer />

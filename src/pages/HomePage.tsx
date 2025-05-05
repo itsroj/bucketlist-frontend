@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Dialog,
@@ -15,9 +15,11 @@ import Footer from "../components/Footer";
 import { useAuth } from "../lib/AuthContext";
 import { Loader2 } from "lucide-react";
 import SpaceButton from "../components/SpaceButton";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { login, register, isLoading } = useAuth();
+  const { login, register, isLoading, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -26,6 +28,13 @@ const HomePage = () => {
   });
   const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Redirect logged-in users to dashboard
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

@@ -10,6 +10,7 @@ import {
 import { Settings } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import logoImage from "../assets/logo-bucket.png";
+import { Link, useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   isUserLoggedIn?: boolean;
@@ -31,11 +32,24 @@ const Navbar: React.FC<NavbarProps> = ({
   disableSettings = false,
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    if (isUserLoggedIn) {
+      navigate("/dashboard");
+    } else {
+      navigate("/");
+    }
+  };
 
   return (
     <header className="navbar">
       <div className="container">
-        <div className="navbar-brand">
+        <div
+          className="navbar-brand"
+          onClick={handleLogoClick}
+          style={{ cursor: "pointer" }}
+        >
           <img src={logoImage} alt="Bucket List Logo" className="navbar-logo" />
         </div>
 

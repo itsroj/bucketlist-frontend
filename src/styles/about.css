@@ -27,7 +27,9 @@ main.about-container {
 
 /* Content Styling */
 .about-content {
-  background-color: var(--bg-card); /* Use theme variable instead of hardcoded #2a2a2a */
+  background-color: var(
+    --bg-card
+  ); /* Use theme variable instead of hardcoded #2a2a2a */
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   overflow: hidden;
@@ -43,7 +45,7 @@ main.about-container {
   background-size: 200% auto;
   -webkit-background-clip: text;
   -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
@@ -62,7 +64,7 @@ main.about-container {
 }
 
 .about-content h1:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -194,7 +196,7 @@ main.about-container {
 }
 
 .profile-links h3:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -235,7 +237,7 @@ main.about-container {
 }
 
 .social-button:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -270,11 +272,11 @@ main.about-container {
   .about-content {
     border-radius: 20px;
   }
-  
+
   .about-image-container {
     height: 450px;
   }
-  
+
   .about-text {
     padding: 3rem;
   }
@@ -285,16 +287,16 @@ main.about-container {
     max-width: 900px;
     margin: 0 auto;
   }
-  
+
   .about-image-container {
     height: 500px;
     border-radius: 16px;
   }
-  
+
   .about-image {
     border-radius: 16px;
   }
-  
+
   .about-content h1 {
     font-size: 3rem;
     margin-top: 3rem;
@@ -307,8 +309,15 @@ main.about-container {
     align-items: center;
     width: calc(100% - 4rem);
   }
-  
+
   .profile-links {
     width: 100%;
   }
+}
+
+.back-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
