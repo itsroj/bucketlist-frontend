@@ -498,8 +498,10 @@ const UserPage = () => {
         <div className="welcome-section text-center mx-auto">
           <h2 className="welcome-title">Welcome {user.firstName}!</h2>
           <p className="welcome-subtitle">Here is your bucket list</p>
+        </div>
 
-          {/* Smaller Create Entry button */}
+        {/* Create Entry button */}
+        <div className="create-entry-container">
           <SpaceButton text="CREATE AN ENTRY" onClick={handleCreateEntry} />
         </div>
 
