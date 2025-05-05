@@ -10,7 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="bucket-list-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="bucket-list-theme">
       <Router>
         <AuthProvider>
           <div className="min-h-screen">

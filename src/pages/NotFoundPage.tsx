@@ -20,7 +20,7 @@ const NotFoundPage = () => {
 
   return (
     <div className="page-container">
-      <Navbar isUserLoggedIn={isAuthenticated} />
+      <Navbar isUserLoggedIn={isAuthenticated} disableSettings={true} />
 
       <main className="not-found-container">
         <img

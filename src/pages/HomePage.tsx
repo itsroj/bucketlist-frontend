@@ -46,7 +46,12 @@ const HomePage = () => {
       setIsLoginDialogOpen(false);
     } catch (err) {
       const error = err as Error;
-      setError(error.message || "Authentication failed");
+      // Display a more user-friendly error message for login failures
+      if (!isSignUp) {
+        setError("Invalid email or password. Please try again.");
+      } else {
+        setError(error.message || "Registration failed");
+      }
     }
   };
 

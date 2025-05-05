@@ -32,8 +32,18 @@ const authFetch = async (endpoint: string, options: RequestInit = {}) => {
   try {
     const response = await fetch(`${API_URL}/api${endpoint}`, config);
 
+    // Special handling for profile password endpoint
+    if (endpoint === "/profile/password" && response.status === 401) {
+      throw new Error("Current password is incorrect. Please try again.");
+    }
+
     // Handle 401 unauthorized errors
     if (response.status === 401) {
+      if (endpoint.includes("/auth/login")) {
+        throw new Error("Invalid email or password. Please try again.");
+      }
+
+      // For other 401 errors, log out
       removeToken();
       // Force login page redirect if needed
       window.location.href = "/";

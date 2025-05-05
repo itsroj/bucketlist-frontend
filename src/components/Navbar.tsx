@@ -18,6 +18,7 @@ interface NavbarProps {
   onSettingsOpenChange?: (open: boolean) => void;
   settingsContent?: React.ReactNode;
   loginButton?: React.ReactNode;
+  disableSettings?: boolean;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
@@ -27,6 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({
   onSettingsOpenChange,
   settingsContent,
   loginButton,
+  disableSettings = false,
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -42,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <ThemeToggle />
           </div>
 
-          {isUserLoggedIn ? (
+          {isUserLoggedIn && !disableSettings ? (
             <Dialog open={isSettingsOpen} onOpenChange={onSettingsOpenChange}>
               <DialogTrigger asChild>
                 <Button
@@ -64,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 {settingsContent}
               </DialogContent>
             </Dialog>
-          ) : (
+          ) : isUserLoggedIn && disableSettings ? null : (
             loginButton
           )}
         </div>

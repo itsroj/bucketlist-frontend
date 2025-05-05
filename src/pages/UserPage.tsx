@@ -49,6 +49,7 @@ const UserPage = () => {
   const [password, setPassword] = useState("");
   const [newName, setNewName] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [newEntry, setNewEntry] = useState({
     title: "",
@@ -262,6 +263,7 @@ const UserPage = () => {
     setPassword("");
     setNewName("");
     setNewPassword("");
+    setConfirmPassword("");
     setError(null);
 
     setAuthAction(action);
@@ -287,13 +289,38 @@ const UserPage = () => {
           }
           break;
         case "password":
-          // Change password
-          if (newPassword) {
+          // Validate password fields
+          if (!newPassword) {
+            throw new Error("Please enter a new password");
+          }
+
+          if (!confirmPassword) {
+            throw new Error("Please confirm your new password");
+          }
+
+          if (newPassword !== confirmPassword) {
+            throw new Error("New password and confirm password do not match");
+          }
+
+          try {
+            // Change password
             await profileAPI.changePassword(password, newPassword);
             alert("Password changed successfully");
             setIsAuthDialogOpen(false);
-          } else {
-            throw new Error("Please enter a new password");
+          } catch (passwordError) {
+            // If there's an error, check if it's related to the current password
+            const error = passwordError as Error;
+            if (
+              error.message.includes("401") ||
+              error.message.includes("unauthorized") ||
+              error.message.includes("Authentication failed")
+            ) {
+              throw new Error(
+                "Current password is incorrect. Please try again."
+              );
+            } else {
+              throw error; // Re-throw other errors
+            }
           }
           break;
         case "delete":
@@ -865,6 +892,20 @@ const UserPage = () => {
               </div>
             )}
 
+            {authAction === "password" && (
+              <div className="form-field-group">
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm your new password"
+                  required
+                />
+              </div>
+            )}
+
             <div className="form-field-group">
               <Label htmlFor="authPassword">Current Password</Label>
               <Input
@@ -894,7 +935,8 @@ const UserPage = () => {
                   !password ||
                   loading ||
                   (authAction === "edit" && !newName) ||
-                  (authAction === "password" && !newPassword)
+                  (authAction === "password" && !newPassword) ||
+                  (authAction === "password" && !confirmPassword)
                 }
               >
                 {loading ? (
