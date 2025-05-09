@@ -93,6 +93,9 @@
   border-radius: 0.5rem;
   width: 80%;
   max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .empty-title {
